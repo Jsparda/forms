@@ -6,7 +6,7 @@ export class TemplatePage { // clase de la página formularios template
   saveButton: ElementFinder;
   correoinput: ElementFinder;
   title: ElementFinder;
-  errorsText: ElementArrayFinder;
+  errorText: ElementArrayFinder;
   checkOption: ElementFinder;
   
 
@@ -16,8 +16,8 @@ export class TemplatePage { // clase de la página formularios template
     this.correoinput = element(by.name('correo')); // obtenemos en input por formControlName
     this.title = element(by.css('h4')); // obtenemos el elemento h4
     this.saveButton = element(by.className('btn-outline-primary')); // obtenemos el elemento por el nombre de la clase
-    this.errorsText = element.all(by.css('.text-danger')); // obtenemos todos los elementos con la clase text-danger
-    this.checkOption = element(by.cssContainingText('.checkbox','Cuba'));
+    this.errorText = element.all(by.css('.text-danger')); // obtenemos todos los elementos con la clase text-danger
+    this.checkOption = element(by.cssContainingText('option','Cuba'));
 
    }
 
@@ -39,7 +39,7 @@ export class TemplatePage { // clase de la página formularios template
   }
 
   getTextOfEspecificError(indice: number): Promise<string>{ // obtiene el texto de un mensaje de error especifico
-    return this.errorsText.get(indice).getText() as Promise<string>;
+    return this.errorText.get(indice).getText() as Promise<string>;
   }
 
   getTitleText(): Promise<string> { // obtiene el titulo de la página
