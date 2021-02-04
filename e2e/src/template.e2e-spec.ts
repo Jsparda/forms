@@ -49,15 +49,9 @@ describe('Pruebas al formularios template', () => { // Engloba todas las pruebas
 // probamos checkbox 
   it('Debe probar checkbox', () => {
     page.navigateToReactivePage();
-      page.clickCheckboxOption();
-      expect(page.isSelectedOption()).toBeTruthy(); // esperamos que aparezca el error
+    page.clickCheckboxOption();
+    expect(page.isSelectedOption()).toBeTruthy(); // esperamos que aparezca el error
   });
-
-
- 
-
-
-
 
   afterEach(async () => { // Este método se ejecuta despues de cada prueba
     // Revisa si no hay errores severos emitidos por el navegador
