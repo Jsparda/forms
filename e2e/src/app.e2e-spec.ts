@@ -50,8 +50,8 @@ describe('Casos de ejemplo', () => { // Engloba todas las pruebas (it) de un cas
     await page.setUsuario('memo');
     await page.setContrasena('1234');
     await page.setContrasena2('1234');
-    await page.setEstado('Louisiana');
-    await page.setMunicipio('New Orleans');
+    await page.setEstado('Puebla');
+    await page.setMunicipio('Puebla');
     await page.clickSaveButton();
 
     //Comprobamos que todos los campos esten nulos
