@@ -58,11 +58,11 @@ describe('Casos de ejemplo', () => { // Engloba todas las pruebas (it) de un cas
     expect(page.getName()).toEqual(''); //Comprobamos que despues de guardar el campo nombre sea nulo
     expect(page.getApellido()).toEqual(''); //Comprobamos que despues de guardar el campo apellido sea nulo
     expect(page.getCorreo()).toEqual(''); //Comprobamos que despues de guardar el campo correo sea nulo
-    expect(page.getUsuario()).toEqual(''); // Comprobamos que despues de recargar el apellido sea nulo
-    expect(page.getContrasena()).toEqual(''); // Comprobamos que despues de recargar el apellido sea nulo
-    expect(page.getContrasena2()).toEqual(''); // Comprobamos que despues de recargar el apellido sea nulo
-    expect(page.getEstado()).toEqual(''); // Comprobamos que despues de recargar el apellido sea nulo
-    expect(page.getMunicipio()).toEqual(''); // Comprobamos que despues de recargar el apellido sea nulo
+    expect(page.getUsuario()).toEqual(''); // Comprobamos que despues de recargar el Usuario sea nulo
+    expect(page.getContrasena()).toEqual(''); // Comprobamos que despues de recargar el Contraseña sea nulo
+    expect(page.getContrasena2()).toEqual(''); // Comprobamos que despues de recargar el Contraseña2 sea nulo
+    expect(page.getEstado()).toEqual(''); // Comprobamos que despues de recargar el Estado sea nulo
+    expect(page.getMunicipio()).toEqual(''); // Comprobamos que despues de recargar el Municiopio sea nulo
   });
 
   it('Debe mostrar un error en el campo apellido si presionamos guardar', () => {

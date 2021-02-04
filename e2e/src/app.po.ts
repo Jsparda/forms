@@ -26,10 +26,10 @@ export class ReactivePage { // clase de la página formularios reactive
     this.deleteButton = element.all(by.className('btn-danger')); // obtenemos todos los elemtos con la clase btn-danger
     this.errorsText = element.all(by.css('.text-danger')); // obtenemos todos los elementos con la clase text-danger
     this.apellidoinput=element(by.css('input[formControlName=apellido]'));//Obtenemos el input por formControlName de apellido
-    this.contrainput=element(by.css('input[formControlName=pass1]'));//Obtenemos la contrasena por formControlName de pass1
+    this.contrainput=element(by.css('input[formControlName=pass1]'));//Obtenemos la contrasena por formControlName 
     this.correoinput=element(by.css('input[formControlName=correo]')); //Obtenemos el correo por formConrtolName de correo
     this.usuarioinput=element(by.css('input[formControlName=usuario]')); //Obtenemos el usuario por formControlName de usuario
-    this.contra2input=element(by.css('input[formControlName=pass2]'))//Obtenemos repetir contrasena por formCOntrolName de pass2
+    this.contra2input=element(by.css('input[formControlName=pass2]'))//Obtenemos repetir contrasena por formCOntrolName
     this.estadoinput=element(by.css('input[formControlName=estado]')) //
     this.municipioinput=element(by.css('input[formControlName=municipio]'))
     this.deleteButton = element.all(by.className('btn-danger')); //Configurando el boton de eliminar hobbie como un array
@@ -106,12 +106,12 @@ export class ReactivePage { // clase de la página formularios reactive
     return this.usuarioinput.getAttribute('value') as Promise<string>;
   }
 
-  setContrasena2(contrasena2: string): Promise<void>{ // escribe el el input Contraseña
+  setContrasena2(contrasena2: string): Promise<void>{ // escribe el el input Contraseña2
     this.contra2input.clear();
     return this.contra2input.sendKeys(contrasena2) as Promise<void>;
   }
 
-  getContrasena2(): Promise<string>{ // regresa el texto del input Contraseña
+  getContrasena2(): Promise<string>{ // regresa el texto del input Contraseña2
     return this.contra2input.getAttribute('value') as Promise<string>;
   }
 
