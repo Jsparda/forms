@@ -41,6 +41,30 @@ describe('Casos de ejemplo', () => { // Engloba todas las pruebas (it) de un cas
     expect(page.getName()).toEqual('Jorge'); // comprobamos que el input tenga el valor que le acabamos de escribir
   });
 
+  it('Deben de estar limpios todos los campos despues de guardar', async () => { // en este ejemplo podemos quitar el método waitForAngular y los await
+    page.navigateToReactivePage();                           // pero los dejo por que me parece mas ilustrativo para futuras prácticas
+    await browser.waitForAngular(); // espera que angular este estable (termine de cargar la página)
+    await page.setName('Jorge');
+    await page.setApellido('Barrera');
+    await page.setCorreo('ak31goat@try.com');
+    await page.setUsuario('memo');
+    await page.setContrasena('1234');
+    await page.setContrasena2('1234');
+    await page.setEstado('Louisiana');
+    await page.setMunicipio('New Orleans');
+    await page.clickSaveButton();
+
+    //Comprobamos que todos los campos esten nulos
+    expect(page.getName()).toEqual(''); //Comprobamos que despues de guardar el campo nombre sea nulo
+    expect(page.getApellido()).toEqual(''); //Comprobamos que despues de guardar el campo apellido sea nulo
+    expect(page.getCorreo()).toEqual(''); //Comprobamos que despues de guardar el campo correo sea nulo
+    expect(page.getUsuario()).toEqual(''); // Comprobamos que despues de recargar el apellido sea nulo
+    expect(page.getContrasena()).toEqual(''); // Comprobamos que despues de recargar el apellido sea nulo
+    expect(page.getContrasena2()).toEqual(''); // Comprobamos que despues de recargar el apellido sea nulo
+    expect(page.getEstado()).toEqual(''); // Comprobamos que despues de recargar el apellido sea nulo
+    expect(page.getMunicipio()).toEqual(''); // Comprobamos que despues de recargar el apellido sea nulo
+  });
+
   it('Debe mostrar un error en el campo apellido si presionamos guardar', () => {
     page.navigateToReactivePage();
     page.clickSaveButton();
@@ -58,6 +82,25 @@ describe('Casos de ejemplo', () => { // Engloba todas las pruebas (it) de un cas
     page.navigateToReactivePage();
     await page.clickAddButton();
     expect(page.deleteHobbieButtonIsPresent()).toBeTruthy(); // esperamos que el botón este presente en la página
+  });
+
+  it('El boton borrar hobbie funciona', async () => {
+    page.navigateToReactivePage();
+    await page.clickAddButton();
+    expect(page.deleteHobbieButtonIsPresent()).toBeTruthy(); // esperamos que el botón este presente en la página
+    await page.clickDeleteButton();
+    expect(page.hobbieinputIsPresent()).toBe(false);
+  });
+
+  it('Debe mostrar un error en el campo correo', () => {
+
+    let nombres = ['jorge','jorge@','jorge@ho'];
+    page.navigateToReactivePage();
+    for (let nombre of nombres){
+      page.setCorreo(nombre);
+      //page.clickSaveButton();
+      expect(page.getTextOfEspecificError(0)).toEqual('Correo obligatorio ;)'); // esperamos que aparezca el error
+    }
   });
 
   // ******* EJERCICIOS PARA PRACTICAR ************
