@@ -8,7 +8,7 @@ browser.driver.controlFlow().execute = function stop() {
   const args = arguments;
 
   origFn.call(browser.driver.controlFlow(), () => {
-    return protractor.promise.delayed(0); // tiempo de retraso entre cada paso
+    return protractor.promise.delayed(100); // tiempo de retraso entre cada paso
   });
 
   return origFn.apply(browser.driver.controlFlow(), args);
@@ -21,6 +21,7 @@ describe('Casos de ejemplo', () => { // Engloba todas las pruebas (it) de un cas
     page = new ReactivePage(); // crea un objeto de la página reactive forms
   });
 
+  /*
   // si ponemos xit o xdescribe jasmine ignorara la prueba o el conjunto de pruebas
   it('Debe poder ir a la pagina de reactive forms', () => { // primera prueba de ejemplo
     page.navigateToReactivePage();
@@ -53,17 +54,52 @@ describe('Casos de ejemplo', () => { // Engloba todas las pruebas (it) de un cas
     page.clickSaveButton();
     expect(page.getTextOfEspecificError(0)).toEqual('Ingresa al menos 5 letras :)'); // esperamos que aparezca el error
   });
-
   it('Debe agregar un elemento a la tabla hobbies si presionamos Agregar', async () => {
     page.navigateToReactivePage();
     await page.clickAddButton();
     expect(page.deleteHobbieButtonIsPresent()).toBeTruthy(); // esperamos que el botón este presente en la página
   });
-
-  // ******* EJERCICIOS PARA PRACTICAR ************
-  // 1. llenar todos los campos del formulario reactivo correctamente, presionar el botón guardar y verificar que se
-  // limpian todos los campos del formulario
-  // 2. Probar que el botón de borrar hobbie funciona
+  
+  // it('Debe llenar todos los campos', async () => { // en este ejemplo podemos quitar el método waitForAngular y los await
+  //   page.navigateToReactivePage();                           // pero los dejo por que me parece mas ilustrativo para futuras prácticas
+  //   await browser.waitForAngular(); // espera que angular este estable (termine de cargar la página)
+  //   await page.setName('Gabriel');
+  //   // expect(page.getName()).toEqual('Gabriel'); // comprobamos que el input tenga el valor que le acabamos de escribir
+  //   await page.setLast('Perez');
+  //   // expect(page.getLast()).toEqual('Perez'); // comprobamos que el input tenga el valor que le acabamos de escribir
+  //   await page.setMail('gabi@try.pol');
+  //   // expect(page.getmail()).toEqual('gabi@try.pol');
+  //   await page.setUser('gabi2020');
+  //   await page.setPass1('1234');
+  //   await page.setPass2('1234');
+  //   await page.setState('Nuevo Leon');
+  //   await page.setCity('Monterrey');
+  //   await page.clickSaveButton();
+  // });
+  
+  // it('El botón de borrar hobbie funciona', async () => {
+    //   page.navigateToReactivePage();
+    //   await browser.waitForAngular();
+    //   await page.clickAddButton();
+    //   await page.clickDeleteButton();
+    //   // expect(page.deleteHobbieButtonIsPresent()).toBeTruthy();
+    // });
+    
+    it('Prueba del arreglo', async () => {
+      const array = ['jorge', 'jorge@', 'jorge@ho'];
+      page.navigateToReactivePage();
+      await browser.waitForAngular();
+      // tslint:disable-next-line: prefer-for-of
+      for ( let i = 0; i < array.length; i++ ){
+        await page.setMail(array[i]);
+      }
+    });
+    */
+    
+    // ******* EJERCICIOS PARA PRACTICAR ************
+    // 1. llenar todos los campos del formulario reactivo correctamente, presionar el botón guardar y verificar que se
+    // limpian todos los campos del formulario
+    // 2. Probar que el botón de borrar hobbie funciona
   // 3. Crear el arreglo ['jorge', 'jorge@' , 'jorge@ho'] hacer una prueba que escriba cada uno de los
   // string del arreglo en el campo correo y verificar que el mensaje de error aparezca en la pantalla
   // (Se debe utilizar un for para no repetir el código por cada string en el arreglo)
